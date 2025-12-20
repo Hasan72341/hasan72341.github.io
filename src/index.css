@@ -1,0 +1,140 @@
+@import "tailwindcss";
+
+@import url('https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500,300,400&display=swap');
+
+/* Amiamie Font Faces */
+@font-face {
+  font-family: "Amiamie";
+  src: url("/fonts/amiamie/otf/Amiamie-Regular.otf") format("opentype"),
+    url("/fonts/amiamie/ttf/Amiamie-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Amiamie";
+  src: url("/fonts/amiamie/otf/Amiamie-Black.otf") format("opentype"),
+    url("/fonts/amiamie/ttf/Amiamie-Black.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  --color-primary: #f5f5f0; /* Sand White */
+  --color-darkLava: #000000; /* Pure Black */
+  --color-sageGray: #666666; /* Neutral Dark Gray for subtitles */
+  --color-gold: #000000;
+  --font-satoshi: "Satoshi", sans-serif;
+  --font-amiamie: "Amiamie", sans-serif;
+  
+  /* Custom Animations */
+  --animate-marquee: marquee 25s linear infinite;
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-100%); }
+  }
+}
+
+/* Custom Utilities */
+@utility banner-text-responsive {
+  @apply text-[36px] sm:text-[48px] md:text-[68px] lg:text-[118px] xl:text-[126px] 2xl:text-[152px] leading-[0.95] tracking-[-0.05em] font-amiamie font-black;
+}
+
+@utility section-head-text {
+  @apply text-[32px] sm:text-[42px] md:text-[64px] lg:text-[86px] leading-[0.95] font-black tracking-[-0.05em] font-amiamie uppercase;
+}
+
+@utility body-text-premium {
+  @apply font-satoshi font-normal tracking-[-0.02em] leading-relaxed;
+}
+
+@utility label-text-premium {
+  @apply font-satoshi font-medium tracking-[0.1em] uppercase text-[10px] md:text-xs text-gray-400;
+}
+
+@utility clip-path-overlay {
+  clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+}
+
+/* ========================================
+   MOBILE BROWSER FIXES (Android/iOS)
+   Disables default behaviors that break GSAP
+   ======================================== */
+
+/* Prevent pull-to-refresh on Android Chrome */
+html {
+  overscroll-behavior: none;
+  overscroll-behavior-y: none;
+}
+
+body {
+  background-color: var(--color-primary);
+  color: var(--color-darkLava);
+  overflow-x: hidden;
+  font-family: var(--font-satoshi);
+  @apply font-normal tracking-[-0.01em];
+  
+  /* Disable pull-to-refresh and overscroll bounce */
+  overscroll-behavior: none;
+  overscroll-behavior-y: none;
+  
+  /* Disable text size adjustment on mobile */
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* Mobile-specific touch and scroll fixes */
+@supports (-webkit-touch-callout: none) or (pointer: coarse) {
+  /* iOS Safari and touch devices */
+  html, body {
+    /* Prevent rubber-band scrolling */
+    overscroll-behavior: none;
+    
+    /* Fix iOS momentum scrolling issues */
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Use dynamic viewport height for mobile address bar */
+  :root {
+    --vh: 1vh;
+  }
+}
+
+/* Disable touch callout and highlight on mobile */
+@media (hover: none) and (pointer: coarse) {
+  * {
+    /* Disable long-press context menu */
+    -webkit-touch-callout: none;
+    
+    /* Disable tap highlight */
+    -webkit-tap-highlight-color: transparent;
+    
+    /* Prevent text selection on tap */
+    -webkit-user-select: none;
+    user-select: none;
+  }
+  
+  /* Re-enable selection for input elements */
+  input, textarea, [contenteditable="true"] {
+    -webkit-user-select: auto;
+    user-select: auto;
+  }
+  
+  /* Fix 300ms tap delay */
+  a, button, [role="button"], input, select, textarea {
+    touch-action: manipulation;
+  }
+  
+    /* Ensure smooth scrolling containers work */
+  
+    html, body {
+  
+      touch-action: pan-y;
+  
+    }
+  
+  }
+  
+  
