@@ -28,6 +28,35 @@ const ProjectItem = ({ project, index, onClick, onHover, onLeave }) => {
         }
       });
 
+      // Parallax Effect
+      gsap.fromTo(textRef.current,
+        { yPercent: -20 },
+        {
+          yPercent: 20,
+          ease: "none",
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true
+          }
+        }
+      );
+
+      gsap.fromTo([metaRef.current, githubRef.current],
+        { yPercent: -10 },
+        {
+          yPercent: 10,
+          ease: "none",
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true
+          }
+        }
+      );
+
       const mm = gsap.matchMedia();
 
       // Mobile: Darken as it hits focus area (center)
@@ -56,7 +85,7 @@ const ProjectItem = ({ project, index, onClick, onHover, onLeave }) => {
 
     }, containerRef);
 
-    // Refresh ScrollTrigger on resize for native scroll accuracy
+    // Refresh ScrollTrigger on resize for native scroll accuracy and Lenis sync
     const handleResize = () => ScrollTrigger.refresh();
     window.addEventListener("resize", handleResize);
 
