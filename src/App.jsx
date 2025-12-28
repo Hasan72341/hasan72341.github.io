@@ -16,6 +16,8 @@ import { UIProvider, useUI } from "./context/UIContext";
 gsap.registerPlugin(ScrollTrigger);
 
 const SmoothScroll = ({ children }) => {
+  const { setLenis } = useUI();
+
   useLayoutEffect(() => {
     const lenis = new Lenis({
       duration: 1.2,
@@ -27,19 +29,20 @@ const SmoothScroll = ({ children }) => {
       touchMultiplier: 2,
     });
 
+    setLenis(lenis);
+
     lenis.on("scroll", ScrollTrigger.update);
 
     gsap.ticker.add((time) => {
       lenis.raf(time * 1000);
     });
 
-    gsap.ticker.lagSmoothing(0);
-
     return () => {
       lenis.destroy();
       gsap.ticker.remove((time) => lenis.raf(time * 1000));
+      setLenis(null);
     };
-  }, []);
+  }, [setLenis]);
 
   return <>{children}</>;
 };

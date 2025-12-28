@@ -11,8 +11,10 @@ export const UIProvider = ({ children }) => {
     const [isLoading, setIsLoading] = useState(false);
     const [isPopupOpen, setIsPopupOpen] = useState(false);
 
+    const [lenis, setLenis] = useState(null);
+
     return (
-        <UIContext.Provider value={{ isLoading, setIsLoading, isPopupOpen, setIsPopupOpen }}>
+        <UIContext.Provider value={{ isLoading, setIsLoading, isPopupOpen, setIsPopupOpen, lenis, setLenis }}>
             {children}
         </UIContext.Provider>
     );

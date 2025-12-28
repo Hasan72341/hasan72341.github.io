@@ -6,7 +6,7 @@ import { content } from "../../constants/data";
 
 const Menu = () => {
     const [isOpen, setIsOpen] = useState(false);
-    const { isPopupOpen } = useUI();
+    const { isPopupOpen, lenis } = useUI();
     const menuRef = useRef(null);
     const bgRef = useRef(null);
     const linksRef = useRef([]);
@@ -55,8 +55,24 @@ const Menu = () => {
             }
         }, menuRef);
 
-        return () => ctx.revert();
-    }, [isOpen]);
+        if (lenis) {
+            if (isOpen) {
+                lenis.stop();
+                document.body.style.overflow = 'hidden';
+            } else {
+                lenis.start();
+                document.body.style.overflow = '';
+            }
+        }
+
+        return () => {
+            ctx.revert();
+            if (lenis) {
+                lenis.start();
+                document.body.style.overflow = '';
+            }
+        };
+    }, [isOpen, lenis]);
 
     const toggleMenu = () => setIsOpen(!isOpen);
 
@@ -74,7 +90,7 @@ const Menu = () => {
             <button
                 onClick={toggleMenu}
                 disabled={isPopupOpen}
-                className={`fixed top-8 right-8 z-[100] w-16 h-16 bg-[#e0dfd5] mix-blend-difference rounded-full flex items-center justify-center cursor-pointer group hover:scale-110 transition-all duration-500 will-change-transform ${isPopupOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
+                className={`fixed top-5 right-5 md:top-8 md:right-8 z-[100] w-12 h-12 md:w-16 md:h-16 bg-[#e0dfd5] mix-blend-difference rounded-full flex items-center justify-center cursor-pointer group hover:scale-110 transition-all duration-500 will-change-transform ${isPopupOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
                 style={{ backfaceVisibility: 'hidden' }}
             >
                 <div className="relative w-6 h-4 overflow-hidden">

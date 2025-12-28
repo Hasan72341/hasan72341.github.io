@@ -30,7 +30,7 @@ const About = ({ education, responsibilities }) => {
     return (
         <section
             ref={containerRef}
-            className="min-h-screen py-32 md:py-32 pt-0 md:pt-32 -mt-[150px] md:mt-0 px-4 md:px-20 relative z-10 pointer-events-none will-change-transform"
+            className="min-h-screen py-32 md:py-32 pt-24 md:pt-32 -mt-[100px] md:mt-0 px-4 md:px-20 relative z-10 pointer-events-none will-change-transform"
         >
             <div className="pointer-events-auto max-w-[1920px] mx-auto">
 
