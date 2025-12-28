@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist -b main",
+    "deploy": "gh-pages -d dist -b main -r https://github.com/Hasan72341/Hasan72341.github.io.git",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"

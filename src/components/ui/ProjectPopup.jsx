@@ -87,6 +87,7 @@ const ProjectPopup = ({ project, onClose }) => {
           <div
             className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden scrollbar-hide"
             style={{ overscrollBehavior: 'contain' }}
+            data-lenis-prevent
           >
             <div className="flex flex-col md:flex-row min-h-full">
 

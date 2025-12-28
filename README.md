@@ -43,3 +43,21 @@ This is a modular, high-performance portfolio website built with React, Vite, Th
 
 *   **Content:** Edit `src/constants/data.js` to update text, projects, and skills.
 *   **Theme:** Colors and fonts are defined in `src/index.css` (Tailwind v4 theme).
+
+## Deployment Configuration
+
+To deploy to `hasan72341.github.io`, the GitHub Action requires a **Personal Access Token (PAT)**.
+
+1.  **Generate a Token:**
+    *   Go to **GitHub Settings -> Developer settings -> Personal access tokens -> Tokens (classic)**.
+    *   Generate a new token with the `repo` scope (FULL control of private repositories).
+    *   Copy the token.
+
+2.  **Add Secret to Repository:**
+    *   Go to this repository's **Settings -> Secrets and variables -> Actions**.
+    *   Click **New repository secret**.
+    *   Name: `API_TOKEN_GITHUB`
+    *   Value: Paste your token.
+
+3.  **Re-run the Workflow:**
+    *   Go to the **Actions** tab and re-run the failed "Deploy" job.
