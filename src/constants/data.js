@@ -69,8 +69,8 @@ export const content = {
     }
   ],
   contact: {
-    email: "hasanraza96@outlook.com",
-    phone: "+91 8340710798",
+    email: " hasanraza96@outlook.com",
+    // phone: "+91 8340710798",
     github: "github.com/hasan72341",
     linkedin: "www.linkedin.com/in/md-hasan-raza-8817372a7/"
   }

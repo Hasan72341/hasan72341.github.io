@@ -6,29 +6,28 @@ import About from "./components/sections/About";
 import Skills from "./components/sections/Skills";
 import Projects from "./components/sections/Projects";
 import Contact from "./components/sections/Contact";
-import Preloader from "./components/ui/Preloader";
 import { content } from "./constants/data";
 
-function App() {
-  const [loading, setLoading] = useState(true);
+import { UIProvider, useUI } from "./context/UIContext";
+
+function AppContent() {
+  const { isLoading } = useUI();
 
   return (
     <>
-      <Preloader onComplete={() => setLoading(false)} />
-      
-      {!loading && (
+      <div>
         <Layout>
           <NetworkCanvas />
-          
+
           <main className="relative z-10 w-full">
             <div id="hero">
               <Hero data={content.hero} />
             </div>
-            
+
             <div id="about">
-              <About 
-                education={content.education} 
-                responsibilities={content.responsibilities} 
+              <About
+                education={content.education}
+                responsibilities={content.responsibilities}
               />
             </div>
 
@@ -45,8 +44,16 @@ function App() {
             </div>
           </main>
         </Layout>
-      )}
+      </div>
     </>
+  );
+}
+
+function App() {
+  return (
+    <UIProvider>
+      <AppContent />
+    </UIProvider>
   );
 }
 

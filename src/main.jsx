@@ -7,7 +7,7 @@ import App from './App.jsx'
 if (typeof window !== 'undefined') {
   // Prevent pull-to-refresh on Android Chrome
   document.body.style.overscrollBehavior = 'none';
-  
+
   // Prevent iOS bounce scroll
   document.addEventListener('touchmove', (e) => {
     // Only prevent default if at the top or bottom of the scroll
@@ -19,7 +19,5 @@ if (typeof window !== 'undefined') {
 }
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
+  <App />
 )

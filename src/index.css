@@ -11,6 +11,7 @@
   font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: "Amiamie";
   src: url("/fonts/amiamie/otf/Amiamie-Black.otf") format("opentype"),
@@ -21,18 +22,27 @@
 }
 
 @theme {
-  --color-primary: #f5f5f0; /* Sand White */
-  --color-darkLava: #000000; /* Pure Black */
-  --color-sageGray: #666666; /* Neutral Dark Gray for subtitles */
+  --color-primary: #e0dfd5;
+  /* Heavy Cream */
+  --color-darkLava: #0a0a09;
+  /* Rich Black */
+  --color-sageGray: #5c5b57;
+  /* Warm Dark Gray */
   --color-gold: #000000;
   --font-satoshi: "Satoshi", sans-serif;
   --font-amiamie: "Amiamie", sans-serif;
-  
+
   /* Custom Animations */
   --animate-marquee: marquee 25s linear infinite;
+
   @keyframes marquee {
-    from { transform: translateX(0); }
-    to { transform: translateX(-100%); }
+    from {
+      transform: translateX(0);
+    }
+
+    to {
+      transform: translateX(-100%);
+    }
   }
 }
 
@@ -45,12 +55,24 @@
   @apply text-[32px] sm:text-[42px] md:text-[64px] lg:text-[86px] leading-[0.95] font-black tracking-[-0.05em] font-amiamie uppercase;
 }
 
+@utility subhead-text {
+  @apply text-lg sm:text-xl md:text-2xl lg:text-3xl font-satoshi font-medium tracking-[-0.02em] leading-snug;
+}
+
 @utility body-text-premium {
   @apply font-satoshi font-normal tracking-[-0.02em] leading-relaxed;
 }
 
+@utility body-text-large {
+  @apply font-satoshi font-normal text-lg md:text-xl lg:text-2xl tracking-[-0.015em] leading-relaxed;
+}
+
 @utility label-text-premium {
-  @apply font-satoshi font-medium tracking-[0.1em] uppercase text-[10px] md:text-xs text-gray-400;
+  @apply font-satoshi font-medium tracking-[0.1em] uppercase text-[10px] md:text-xs text-darkLava/60;
+}
+
+@utility link-text {
+  @apply font-satoshi font-medium text-sm md:text-base tracking-[-0.01em] underline-offset-4 hover:underline transition-all;
 }
 
 @utility clip-path-overlay {
@@ -66,6 +88,10 @@
 html {
   overscroll-behavior: none;
   overscroll-behavior-y: none;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 body {
@@ -73,29 +99,113 @@ body {
   color: var(--color-darkLava);
   overflow-x: hidden;
   font-family: var(--font-satoshi);
-  @apply font-normal tracking-[-0.01em];
-  
+  font-size: 1rem;
+  line-height: 1.6;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+
   /* Disable pull-to-refresh and overscroll bounce */
   overscroll-behavior: none;
   overscroll-behavior-y: none;
-  
+
   /* Disable text size adjustment on mobile */
   -webkit-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
   text-size-adjust: 100%;
 }
 
+/* Base Heading Styles */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-amiamie);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 8vw, 6rem);
+}
+
+h2 {
+  font-size: clamp(2rem, 6vw, 4.5rem);
+}
+
+h3 {
+  font-size: clamp(1.5rem, 4vw, 3rem);
+}
+
+h4 {
+  font-size: clamp(1.25rem, 3vw, 2rem);
+}
+
+h5 {
+  font-size: clamp(1rem, 2vw, 1.5rem);
+}
+
+h6 {
+  font-size: clamp(0.875rem, 1.5vw, 1.25rem);
+}
+
+/* Paragraph and Text Defaults */
+p {
+  font-family: var(--font-satoshi);
+  font-size: 1rem;
+  line-height: 1.7;
+  letter-spacing: -0.01em;
+}
+
+@media (min-width: 768px) {
+  p {
+    font-size: 1.125rem;
+  }
+}
+
+/* Strong and emphasis */
+strong,
+b {
+  font-weight: 700;
+}
+
+em,
+i {
+  font-style: italic;
+}
+
+/* Small text */
+small {
+  font-size: 0.875rem;
+  letter-spacing: 0;
+}
+
+/* Text Selection Styling */
+::selection {
+  background-color: #1a1a1a;
+  color: #e0dfd5;
+}
+
+::-moz-selection {
+  background-color: #1a1a1a;
+  color: #e0dfd5;
+}
+
 /* Mobile-specific touch and scroll fixes */
 @supports (-webkit-touch-callout: none) or (pointer: coarse) {
+
   /* iOS Safari and touch devices */
-  html, body {
+  html,
+  body {
     /* Prevent rubber-band scrolling */
     overscroll-behavior: none;
-    
+
     /* Fix iOS momentum scrolling issues */
     -webkit-overflow-scrolling: touch;
   }
-  
+
   /* Use dynamic viewport height for mobile address bar */
   :root {
     --vh: 1vh;
@@ -107,34 +217,40 @@ body {
   * {
     /* Disable long-press context menu */
     -webkit-touch-callout: none;
-    
+
     /* Disable tap highlight */
     -webkit-tap-highlight-color: transparent;
-    
+
     /* Prevent text selection on tap */
     -webkit-user-select: none;
     user-select: none;
   }
-  
+
   /* Re-enable selection for input elements */
-  input, textarea, [contenteditable="true"] {
+  input,
+  textarea,
+  [contenteditable="true"] {
     -webkit-user-select: auto;
     user-select: auto;
   }
-  
+
   /* Fix 300ms tap delay */
-  a, button, [role="button"], input, select, textarea {
+  a,
+  button,
+  [role="button"],
+  input,
+  select,
+  textarea {
     touch-action: manipulation;
   }
-  
-    /* Ensure smooth scrolling containers work */
-  
-    html, body {
-  
-      touch-action: pan-y;
-  
-    }
-  
+
+  /* Ensure smooth scrolling containers work */
+
+  html,
+  body {
+
+    touch-action: pan-y;
+
   }
-  
-  
+
+}
