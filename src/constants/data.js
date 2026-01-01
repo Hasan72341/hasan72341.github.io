@@ -15,6 +15,45 @@ export const content = {
   },
   projects: [
     {
+      title: "Hospital Automation System",
+      tech: "FastAPI • React • PostgreSQL • Docker • LLMs (Llama-3)",
+      desc: "Autonomous hospital management system enabling natural-language clinical operations and intelligent bed allocation.",
+      details: {
+        problem: "Manual hospital operations struggle with real-time bed allocation, patient transfers, and operational visibility under high load.",
+        solution: "Built an autonomous AI agent that executes hospital operations via natural language. Implemented severity-driven ICU vs. General bed reallocation and a real-time operational dashboard.",
+        stack: [
+          "FastAPI",
+          "React",
+          "PostgreSQL",
+          "Docker",
+          "LLM Agent (Llama-3 via Ollama)",
+          "System Orchestration"
+        ],
+        outcome: "Managed 120+ beds with live occupancy analytics, automated transfers, and explainable AI-driven actions in a containerized production-like environment."
+      },
+      link: "https://github.com/Hasan72341/hospital-automation-ai"
+    },
+    {
+      title: "Guardia — AI-Powered Women Safety Platform",
+      tech: "FastAPI • React • PostgreSQL • ONNX • YOLOv8 • Docker",
+      desc: "Real-time women safety system using audio-visual AI for threat detection and emergency response.",
+      details: {
+        problem: "Lack of proactive, real-time threat detection and coordinated emergency response in personal safety systems.",
+        solution: "Designed a passive AI architecture where frontends stream media for server-side ONNX inference. Fused audio emotion recognition and vision-based pose detection into a unified risk score.",
+        stack: [
+          "FastAPI",
+          "React",
+          "PostgreSQL",
+          "YOLOv8 (ONNX)",
+          "Speech Emotion Recognition",
+          "Docker",
+          "JWT & RBAC"
+        ],
+        outcome: "Enabled automated emergency alerts, responder dashboards, and secure role-based workflows in a microservices-ready system."
+      },
+      link: "https://github.com/TarunaJ2006/Women-Safety-App"
+    },
+    {
       title: "Mini Search Engine",
       tech: "Python • Docker • CLI",
       desc: "Indexed 50,000+ Wikipedia articles using a positional inverted index and optimized two-pointer intersection.",
@@ -24,7 +63,7 @@ export const content = {
         stack: ["Python", "Docker", "Information Retrieval", "Optimized Algorithms"],
         outcome: "Achieved sub-100ms query times and demonstrated stable performance in a containerized interactive CLI."
       },
-      link: "https://github.com/hasan72341/mini-search-engine" 
+      link: "https://github.com/hasan72341/mini-search-engine"
     },
     {
       title: "ML Platform",
@@ -60,12 +99,12 @@ export const content = {
   },
   responsibilities: [
     {
-        role: "Core Member, Programming Club, IIT Mandi",
-        desc: "Collaborated with peers on technical activities and internal coordination."
+      role: "Core Member, Programming Club, IIT Mandi",
+      desc: "Collaborated with peers on technical activities and internal coordination."
     },
     {
-        role: "Core Member, ACM Students Chapter, IIT Mandi",
-        desc: "Participated in academic events, discussions, and team-led initiatives."
+      role: "Core Member, ACM Students Chapter, IIT Mandi",
+      desc: "Participated in academic events, discussions, and team-led initiatives."
     }
   ],
   contact: {
